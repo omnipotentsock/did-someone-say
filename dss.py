@@ -1,5 +1,6 @@
 import discord
-import random 
+import random
+import os
 
 intents = discord.Intents.default()
 intents.members = True

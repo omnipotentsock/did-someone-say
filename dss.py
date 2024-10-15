@@ -6,7 +6,7 @@ intents.members = True
 intents.presences = True
 intents.message_content = True
 
-token = os.getenv("DISCORD_TOKEN")
+token = os.environ["DISCORD_TOKEN"]
 client = discord.Client(intents=intents)
 
 response_list = {

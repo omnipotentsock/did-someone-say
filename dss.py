@@ -16,7 +16,7 @@ client = discord.Client(intents=intents)
 response_list = {
     "hawk": [f'*hawk..?*', "hawk tuah! ~~spit on that thing~~ kill yourself!", "hawk? why don't you talk tuah some bitches?"],
     "crazy": ["crazy? i was crazy once. they locked me in a room. a rubber room. a rubber room with rats. and rats make me crazy.", "y'know what would be crazier tho? touching some grass"],
-    "mn" : [f'MN mentioned!! what the fuck are "food options" rahhh!!'],
+    " mn" : [f'MN mentioned!! what the fuck are "food options" rahhh!!'],
     "roll call": ["I am inside your walls"]
 }
 

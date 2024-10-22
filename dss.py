@@ -19,8 +19,7 @@ tree = app_commands.CommandTree(client)
 response_list = {
     "hawk": [f'*hawk..?*', "hawk tuah! ~~spit on that thing~~ kill yourself!", "hawk? why don't you talk tuah some bitches?"],
     "crazy": ["crazy? i was crazy once. they locked me in a room. a rubber room. a rubber room with rats. and rats make me crazy.", "y'know what would be crazier tho? touching some grass"],
-    "mn" : [f'MN mentioned!! what the fuck are "food options" rahhh!!'],
-    "roll call": ["I am inside your walls"]
+    "mn" : [f'MN mentioned!! what the fuck are "food options" rahhh!!']
 }
 
 coin_flip = ["heads", "tails"]
@@ -40,10 +39,19 @@ async def on_message(message):
             "I'm chilling! Here are all the things I can do. \n\n" +
             "**Features:**\n" +
             "`dss wyd`: prints this message \n" +
+            "`dss triggers`: get a list of words that trigger a response\n" +
             "`heads or tails`: flips a coin and gives the result\n" +
-            "`blackjack me off`: starts a game of blackjack (currently under development)\n" +
-            "*for any further help, issues, or feature requests message @adoopted*", reference=message
+            "`blackjack me off`: starts a game of blackjack *(currently under development)*\n" +
+            "\n*for any further help, issues, or feature requests, message @adoopted*", 
+            reference=message
         )
+
+    if message.content == "dss triggers":
+        reply = "**Here are all the trigger words I will reply to:**"
+        for word in response_list.keys():
+            reply += "\n" + word
+        await message.channel.send(reply, reference=message)
+        return
 
     if message.content.lower() == "heads or tails":
         t0 = random.randint(0, 1)
@@ -57,6 +65,11 @@ async def on_message(message):
     for word, responses in response_list.items():
         if word in message.content.lower().split():
             response = random.choice(responses)
+
+            t0 = random.randint(0,100)
+            if t0 < 20:
+                await message.channel.send(response + "\n\n*Tip: type `dss wyd` to get a list of commands and features*", reference=message)
+                return
             await message.channel.send(response, reference=message)
             return
 

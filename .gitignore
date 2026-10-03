@@ -3,3 +3,4 @@ __pycache__/
 discord_token.py
 test
 .env
+node_modules
